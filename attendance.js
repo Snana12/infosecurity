@@ -6,9 +6,9 @@ const attendance = require ('./attendance.js')
 app.use(express.json())
 
 app.post('/attendance', StudentToken, async (req, res) => {
-    const { matrix, date, subject, code, section } = req.body;
+    const { matrix, date, subject,section } = req.body;
     try {
-      attendanceModule.recordAttendance(matrix, date, subject, code, section);
+      attendanceModule.recordAttendance(matrix, date, subject,section);
       res.status(201).send("Attendance Submitted");
     } catch (error) {
       console.log(error);
@@ -24,7 +24,6 @@ app.post('/attendance', StudentToken, async (req, res) => {
           matrix: matrix,
           date :date ,
           subject:subject,
-          code:code,
           section:section,
           };
         
